@@ -1,0 +1,1 @@
+A simple logistic regression model will be hardcoded for this problem.
