@@ -26,3 +26,4 @@ The database will be a simple SQL table containing the following columns: id: pr
 The above link is a starting point to build the app within Sunday
 https://www.quora.com/Where-do-I-start-learning-how-to-make-a-simple-web-app 
 
+It has been decided that streamlit.io will be used to build the web-app considering my skill requirements.
