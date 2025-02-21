@@ -13,3 +13,4 @@ However, for getting with the flow, a simple linear regression model will be bui
 parts of a linear regression model: model
 gradient descent, loss function and gradient descent
 
+A simple linear regression model
