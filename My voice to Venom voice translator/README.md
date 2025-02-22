@@ -1,0 +1,2 @@
+This is a long standing project of mine. Let's get this done. 
+This app should either in real-time or after given input convert my voice to venom's voice. Or to akaike's voice in japanese - this is to be used as referecne for his voice - https://www.youtube.com/watch?v=R28zmilcqnk 
