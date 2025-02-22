@@ -1,0 +1,3 @@
+An LLM to skill up in my work. The best way to learn is to repeatedly write tests with feedback. 
+
+The objective of this LLM is to be used as a one-stop platform for finding references to learn all the important cocepts or to be used as a database for those concepts, then the level of skills to be obtained is embeeded into the system, so that with every test it will obtain feedback on my current level and progressively make the exams harder to get to the next level (Give refernces for these concepts). These exams could be simple dubbing exercises, fill in the blanks, paragraph writing or coding projects. This LLM will serve as a one-stop solution for training candidates.

@@ -1,0 +1,1 @@
+This LLM will serve as one-stop platform for developing all the product management skills to get a job. It will measure my current skill level and have a target for my future desired skill level, it will give me periodic exams, and simple tasks and projects, this app will note down the time taken by me to complete the task. 
