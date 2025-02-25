@@ -1,6 +1,5 @@
 import streamlit as st
-
-conn = st.connection("postgresql", type="sql",ttl=0.01)
+import psycopg2
 
 id = st.text_input("task_id (number):")
 title = st.text_input("task_title:")
@@ -9,7 +8,17 @@ start_date = st.text_input("Enter date in YYYY-MM-DD:")
 end_date = st.text_input("enter date in YYYY-MM-DD:")
 
 if st.button("create_task"):
-    params = {"id":id,"title":title,"description":description,"start_date":start_date,"end_date":end_date}
-    df = conn.query(f"INSERT INTO task_database(id,title,description,start_date,end_date)VALUES(:id,:title,:description,:start_date,:end_date)",params = params)
+    conn = psycopg2.connect(host = "localhost", database = "postgres", user = "postgres", password = "skapeed24!)97")
+    cursor = conn.cursor()
+    cursor.execute("INSERT INTO task_database(id,title,description,start_date,end_date) VALUES(%s,%s,%s,%s,%s);",(id,title,description,start_date,end_date))
     conn.commit()
+    st.write("The task has been created successfully")
+    conn.close()
 
+if st.button("look at up updated rows"):
+    conn = psycopg2.connect(host = "localhost", database = "postgres", user = "postgres", password = "skapeed24!)97")
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM task_database")
+    answer = cursor.fetchall()
+    st.dataframe(answer)
+    conn.close()

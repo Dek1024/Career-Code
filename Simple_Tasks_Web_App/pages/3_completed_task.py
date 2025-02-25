@@ -1,7 +1,8 @@
 import streamlit as st
-import pandas as pd
+import psycopg2 
 
-conn = st.connection("postgresql", type="sql",ttl=0.01)
-df = conn.query(f"SELECT * FROM task_database WHERE completed")
-df = pd.DataFrame(df)
-st.write(df)
+conn = psycopg2.connect(host = "localhost",database = "postgres", user = "postgres", password = "skapeed24!)97")
+cursor = conn.cursor()
+cursor.execute("SELECT * FROM task_database WHERE completed")
+returned_info = cursor.fetchall()
+st.dataframe(returned_info)

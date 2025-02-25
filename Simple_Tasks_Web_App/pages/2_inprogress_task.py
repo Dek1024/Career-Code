@@ -1,35 +1,16 @@
 import streamlit as st
-import pandas as pd
+import psycopg2
 
-def switch_page(page_name: str):
-    from streamlit import _RerunData, _RerunException
-    from streamlit.source_util import get_pages
+conn = psycopg2.connect(host = "localhost",database = "postgres",user = "postgres",password = "skapeed24!)97")
+cursor = conn.cursor()
+cursor.execute("SELECT * FROM task_database WHERE NOT completed;")
+database = cursor.fetchall()
+st.dataframe(database)
+st.write("Successful commit to database")
 
-    def standardize_name(name: str) -> str:
-        return name.lower().replace("_", " ")
-    
-    page_name = standardize_name(page_name)
+id = st.text_input("Complete task (enter_task_id)")
+if id:
+    cursor.execute("INSERT INTO task_database (completed) VALUES (%s) WHERE id = (%s);",(True,bool(id)))
+    udpate = cursor.fetchall()
 
-    pages = get_pages("home_window.py")  # OR whatever your main page is called
-
-    for page_hash, config in pages.items():
-        if standardize_name(config["page_name"]) == page_name:
-            raise _RerunException(
-                _RerunData(
-                    page_script_hash=page_hash,
-                    page_name=page_name,
-                )
-            )
-
-    page_names = [standardize_name(config["page_name"]) for config in pages.values()]
-
-    raise ValueError(f"Could not find page {page_name}. Must be one of {page_names}")
-
-
-conn = st.connection("postgresql", type="sql",ttl=0.01)
-df = conn.query(f"SELECT * FROM task_database WHERE NOT completed")
-df = pd.DataFrame(df)
-st.write(df)
-
-if st.button("completed_tasks"):
-    st.switch_page('/pages/3_completed_task.py')
+st.page_link("pages/3_completed_task.py",label="Completed_Task(s)",icon = ":material/arrow_right_alt:")
