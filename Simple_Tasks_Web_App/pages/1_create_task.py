@@ -15,10 +15,5 @@ if st.button("create_task"):
     st.write("The task has been created successfully")
     conn.close()
 
-if st.button("look at up updated rows"):
-    conn = psycopg2.connect(host = "localhost", database = "postgres", user = "postgres", password = "skapeed24!)97")
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM task_database")
-    answer = cursor.fetchall()
-    st.dataframe(answer)
-    conn.close()
+st.page_link("pages/2_inprogress_task.py",label="Inprogress_Task(s)",icon = ":material/arrow_right_alt:")
+st.page_link("home_window.py",label="Home_Window",icon = ":material/arrow_right_alt:")
