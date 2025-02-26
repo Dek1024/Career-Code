@@ -8,7 +8,10 @@ start_date = st.text_input("Enter date in YYYY-MM-DD:")
 end_date = st.text_input("enter date in YYYY-MM-DD:")
 
 if st.button("create_task"):
-    conn = psycopg2.connect(host = "localhost", database = "postgres", user = "postgres", password = "skapeed24!)97")
+    conn = psycopg2.connect(host = st.secrets.connections.host, 
+                            database = st.secrets.connections.database,
+                              user = st.secrets.connections.username, 
+                              password = st.secrets.connections.password)
     cursor = conn.cursor()
     cursor.execute("INSERT INTO task_database(id,title,description,start_date,end_date) VALUES(%s,%s,%s,%s,%s);",(id,title,description,start_date,end_date))
     conn.commit()

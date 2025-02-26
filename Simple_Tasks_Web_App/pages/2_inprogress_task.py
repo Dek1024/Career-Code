@@ -1,7 +1,10 @@
 import streamlit as st
 import psycopg2
 
-conn = psycopg2.connect(host = "localhost",database = "postgres",user = "postgres",password = "skapeed24!)97")
+conn = psycopg2.connect(host = st.secrets.connections.host, 
+                            database = st.secrets.connections.database,
+                              user = st.secrets.connections.username, 
+                              password = st.secrets.connections.password)
 cursor = conn.cursor()
 cursor.execute("SELECT * FROM task_database WHERE NOT completed;")
 database = cursor.fetchall()

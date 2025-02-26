@@ -13,7 +13,6 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-
 st.title("Task Tracking WebApp")
 
 def switch_page(page_name: str):
