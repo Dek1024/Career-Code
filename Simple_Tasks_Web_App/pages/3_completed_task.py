@@ -20,7 +20,7 @@ if user_confirmation:
     conn.commit()
 #    path = Path(__file__).parent / "files/task_move_inprogress.mp3"
 #    st.write(path)
-    st.audio("task_move_inprogress.mp3",autoplay=True)
+    st.audio("/task_move_inprogress.mp3",autoplay=True)
     st.text("Task moved to inprogress")
 
 st.page_link("pages/2_inprogress_task.py",label="Inprogress_Task(s)",icon = ":material/arrow_right_alt:")
