@@ -1,6 +1,6 @@
 import streamlit as st
 import psycopg2
-from pathlib import Path
+#from pathlib import Path
 
 conn = psycopg2.connect(host = st.secrets.connections.host, 
                             database = st.secrets.connections.database,
@@ -18,8 +18,8 @@ user_confirmation = st.button("Confirm task completion ?")
 if user_confirmation:
     cursor.execute("UPDATE tasktracker_table SET completed = (%s) WHERE id = (%s);",(True,id))
     conn.commit()
-    path = Path(__file__).parent / "files/task_complete.mp3"
-    st.audio(path,autoplay=True)
+    #path = Path(__file__).parent / "files/task_complete.mp3"
+    st.audio("task_complete.mp3",autoplay=True)
     st.write("Task completed")
 
 st.page_link("pages/3_completed_task.py",label="Completed_Task(s)",icon = ":material/arrow_right_alt:")
