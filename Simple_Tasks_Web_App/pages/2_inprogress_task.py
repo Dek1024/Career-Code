@@ -17,7 +17,7 @@ user_confirmation = st.button("Confirm task completion ?")
 if user_confirmation:
     cursor.execute("UPDATE tasktracker_table SET completed = (%s) WHERE id = (%s);",(True,id))
     conn.commit()
-    st.audio("/Users/user/Career Code/Simple_Tasks_Web_App/files/task_complete.mp3",autoplay=True)
+    st.audio("../files/task_complete.mp3",autoplay=True)
     st.write("Task completed")
 
 st.page_link("pages/3_completed_task.py",label="Completed_Task(s)",icon = ":material/arrow_right_alt:")

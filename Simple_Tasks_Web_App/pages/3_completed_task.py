@@ -17,7 +17,7 @@ user_confirmation = st.button("Task Move to In-progress, Confirm ?")
 if user_confirmation:
     cursor.execute("UPDATE tasktracker_table SET completed = %s, end_date = %s WHERE id = %s;",(False,new_end_date,id))
     conn.commit()
-    st.audio("/Users/user/Career Code/Simple_Tasks_Web_App/files/task_move_inprogress.mp3",autoplay=True)
+    st.audio("../files/task_move_inprogress.mp3",autoplay=True)
     st.text("Task moved to inprogress")
 
 st.page_link("pages/2_inprogress_task.py",label="Inprogress_Task(s)",icon = ":material/arrow_right_alt:")
