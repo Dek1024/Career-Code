@@ -6,7 +6,7 @@ conn = psycopg2.connect(host = st.secrets.connections.host,
                               user = st.secrets.connections.username, 
                               password = st.secrets.connections.password)
 cursor = conn.cursor()
-cursor.execute("SELECT * FROM task_database WHERE NOT completed;")
+cursor.execute("SELECT * FROM tasktracker_table WHERE NOT completed;")
 database = cursor.fetchall()
 st.dataframe(database)
 #st.write("Successful commit to database")
@@ -15,7 +15,7 @@ id = st.text_input("Complete task (enter_task_id)")
 user_confirmation = st.button("Confirm task completion ?")
 
 if user_confirmation:
-    cursor.execute("UPDATE task_database SET completed = (%s) WHERE id = (%s);",(True,id))
+    cursor.execute("UPDATE tasktracker_table SET completed = (%s) WHERE id = (%s);",(True,id))
     conn.commit()
     st.audio("/Users/user/Career Code/Simple_Tasks_Web_App/files/task_complete.mp3",autoplay=True)
     st.write("Task completed")

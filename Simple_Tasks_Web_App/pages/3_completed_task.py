@@ -6,7 +6,7 @@ conn = psycopg2.connect(host = st.secrets.connections.host,
                               user = st.secrets.connections.username, 
                               password = st.secrets.connections.password)
 cursor = conn.cursor()
-cursor.execute("SELECT * FROM task_database WHERE completed")
+cursor.execute("SELECT * FROM tasktracker_table WHERE completed")
 returned_info = cursor.fetchall()
 st.dataframe(returned_info)
 
@@ -15,7 +15,7 @@ new_end_date = st.text_input("Enter the new_end_date - format YYYY-MM-DD")
 user_confirmation = st.button("Task Move to In-progress, Confirm ?")
 
 if user_confirmation:
-    cursor.execute("UPDATE task_database SET completed = %s, end_date = %s WHERE id = %s;",(False,new_end_date,id))
+    cursor.execute("UPDATE tasktracker_table SET completed = %s, end_date = %s WHERE id = %s;",(False,new_end_date,id))
     conn.commit()
     st.audio("/Users/user/Career Code/Simple_Tasks_Web_App/files/task_move_inprogress.mp3",autoplay=True)
     st.text("Task moved to inprogress")
