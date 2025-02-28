@@ -18,7 +18,7 @@ user_confirmation = st.button("Confirm task completion ?")
 if user_confirmation:
     cursor.execute("UPDATE tasktracker_table SET completed = (%s) WHERE id = (%s);",(True,id))
     conn.commit()
-    path = Path(__file__).parent/"task_complete.mp3"
+    path = Path(__file__).parent/"files/task_complete.mp3"
     st.audio(path,format="audio/mpeg",autoplay=True)
     st.write("Task completed")
 
