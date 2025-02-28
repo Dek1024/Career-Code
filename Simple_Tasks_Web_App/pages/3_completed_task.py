@@ -18,9 +18,9 @@ user_confirmation = st.button("Task Move to In-progress, Confirm ?")
 if user_confirmation:
     cursor.execute("UPDATE tasktracker_table SET completed = %s, end_date = %s WHERE id = %s;",(False,new_end_date,id))
     conn.commit()
-#    path = Path(__file__).parent / "files/task_move_inprogress.mp3"
-#    st.write(path)
-    st.audio("/pages/task_move_inprogress.mp3",format = "audio/mpeg",autoplay=True)
+    path = Path(__file__).parent/"pages/task_move_inprogress.mp3"
+    st.write(path)
+    st.audio(path,format = "audio/mpeg",autoplay=True)
     st.text("Task moved to inprogress")
 
 st.page_link("pages/2_inprogress_task.py",label="Inprogress_Task(s)",icon = ":material/arrow_right_alt:")
