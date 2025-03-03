@@ -5,8 +5,8 @@ import psycopg2
 id = st.text_input("task_id (number):")
 title = st.text_input("task_title:")
 description = st.text_input("task_description:")
-start_date = st.text_input("Enter date in YYYY-MM-DD:")
-end_date = st.text_input("enter date in YYYY-MM-DD:")
+start_date = st.text_input("Enter start_date in YYYY-MM-DD:")
+end_date = st.text_input("Enter end_date in YYYY-MM-DD:")
 
 # Fetch database credentials from Cloud Secret Manager
 # secret_client = secretmanager.SecretManagerServiceClient()

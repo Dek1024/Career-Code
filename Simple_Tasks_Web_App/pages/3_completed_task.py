@@ -11,7 +11,7 @@ cursor.execute("SELECT * FROM tasktracker_table WHERE completed")
 returned_info = cursor.fetchall()
 st.dataframe(returned_info)
 
-id = st.text_input("Task id of task to be moved to in-progress chart")
+id = st.text_input("Task number task to be moved to in-progress chart")
 new_end_date = st.text_input("Enter the new_end_date - format YYYY-MM-DD")
 user_confirmation = st.button("Task Move to In-progress, Confirm ?")
 
